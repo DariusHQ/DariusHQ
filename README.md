@@ -7,13 +7,6 @@
   >
   <img
     align="center"
-    width="21"
-    height="160"
-    src="./separator.svg"
-    alt=""
-  >
-  <img
-    align="center"
     width="400"
     src="https://streak-stats.demolab.com/?user=DariusHQ&card_width=467&hide_border=true&background=0d1117&ring=37d67a&fire=37d67a&currStreakLabel=37d67a&sideLabels=c9d1d9&currStreakNum=ffffff&sideNums=ffffff&dates=8b949e&stroke=30363d"
     alt="GitHub Streak"
