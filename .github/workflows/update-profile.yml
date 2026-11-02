@@ -39,7 +39,7 @@ jobs:
 
       - name: Save changed cards
         run: |
-          git add assets/top-repositories-title.svg assets/fiverunner.svg assets/anyps5.svg
+          git add assets/fiverunner.svg assets/anyps5.svg
           if git diff --cached --quiet; then
             echo "Cards are already up to date."
             exit 0

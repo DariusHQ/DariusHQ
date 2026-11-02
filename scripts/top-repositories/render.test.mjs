@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { renderHeading, renderRepositoryCard } from './render.mjs';
+import { renderRepositoryCard } from './render.mjs';
 
 const repo = {
   name: 'A<&"'.repeat(30), description: '<script>alert("no")</script>', language: 'TypeScript',
@@ -21,6 +21,4 @@ assert.match(renderRepositoryCard({ owner: '<&', repository: repo }), /&lt;&amp;
 const zero = renderRepositoryCard({ owner: 'DariusHQ', repository: { ...repo, additions: 0, deletions: 0 } });
 assert.match(zero, />\+0<\/text>/);
 assert.match(zero, />−0<\/text>/);
-assert.match(renderHeading(), /width="820" height="54"/);
-assert.match(renderHeading(), /Top repositories:/);
 console.log('Renderer checks passed.');

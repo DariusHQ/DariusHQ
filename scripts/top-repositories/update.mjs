@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
 import { setTimeout } from 'node:timers/promises';
-import { renderHeading, renderRepositoryCard } from './render.mjs';
+import { renderRepositoryCard } from './render.mjs';
 
 export async function github(path) {
   for (let attempt = 0; attempt < 12; attempt++) {
@@ -79,9 +79,9 @@ async function main() {
   const data = values.data ? JSON.parse(await readFile(values.data, 'utf8'))
     : await collect(process.env.GITHUB_REPOSITORY_OWNER || 'DariusHQ');
   const output = resolve(values.output);
-  const cards = [{ name: 'top-repositories-title', svg: renderHeading() }, ...data.repositories.map(repository => ({
+  const cards = data.repositories.map(repository => ({
     name: repository.name.toLowerCase(), svg: renderRepositoryCard({ owner: data.owner, repository }),
-  }))];
+  }));
   await mkdir(output, { recursive: true });
   for (const card of cards) {
     if (!/^[a-z0-9_.-]+$/.test(card.name) || card.name === '.' || card.name === '..') throw new Error('Invalid output filename');
@@ -89,7 +89,7 @@ async function main() {
     await writeFile(`${path}.tmp`, card.svg, 'utf8');
     await rename(`${path}.tmp`, path);
   }
-  console.log(`Updated ${data.repositories.length} independent cards and heading in ${output}.`);
+  console.log(`Updated ${data.repositories.length} independent cards in ${output}.`);
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href)

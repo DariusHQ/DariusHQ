@@ -1,28 +1,16 @@
 <p align="center">
-  <img
-    width="820"
-    src="./assets/top-repositories-title.svg"
-    alt="Top repositories:"
-  >
-</p>
-
-<p align="center">
-  <a href="https://github.com/DariusHQ/fiverunner">
-    <img
+  <a href="https://github.com/DariusHQ/fiverunner"><img
       align="center"
       width="400"
       src="./assets/fiverunner.svg"
       alt="fiverunner: contributions, lines added, lines removed, stars and forks"
-    >
-  </a>
-  <a href="https://github.com/boykopovar/AnyPS5">
-    <img
+    ></a>
+  <a href="https://github.com/boykopovar/AnyPS5"><img
       align="center"
       width="400"
       src="./assets/anyps5.svg"
       alt="AnyPS5: contributions, lines added, lines removed, stars and forks"
-    >
-  </a>
+    ></a>
 </p>
 
 <p align="center">

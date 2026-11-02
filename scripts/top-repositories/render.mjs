@@ -17,14 +17,6 @@ const repositoryIcon = '<path d="M3 2.5h10v13H3a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z 
 const starIcon = '<path d="m8 1 2.1 4.3 4.8.7-3.5 3.4.8 4.8L8 12l-4.2 2.2.8-4.8L1.1 6l4.8-.7Z"/>';
 const forkIcon = '<circle cx="4" cy="3" r="2"/><circle cx="12" cy="3" r="2"/><circle cx="8" cy="13" r="2"/><path d="M4 5v1.5A2.5 2.5 0 0 0 6.5 9H8m4-4v1.5A2.5 2.5 0 0 1 9.5 9H8v2"/>';
 
-export function renderHeading() {
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="820" height="54" viewBox="0 0 820 54" role="img" aria-labelledby="heading-title">
-  <title id="heading-title">Top repositories:</title>
-  <rect width="820" height="54" fill="#0d1117"/>
-  <text x="16" y="36" fill="#37d67a" font-family="Segoe UI, Ubuntu, Arial, sans-serif" font-size="20" font-weight="600">Top repositories:</text>
-</svg>\n`;
-}
-
 export function renderRepositoryCard({ owner, repository: repo }) {
   if (typeof owner !== 'string' || !owner.trim() || !repo || typeof repo.name !== 'string' || !repo.name.trim()) {
     throw new TypeError('owner and a repository with a name are required');
