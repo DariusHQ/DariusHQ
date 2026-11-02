@@ -5,7 +5,7 @@
       src="./assets/fiverunner.svg"
       alt="fiverunner: contributions, lines added, lines removed, stars and forks"
     ></a>
-  <img align="center" width="1" height="230" src="./separator-horizontal.svg" alt="">
+  <img align="center" width="1" height="230" src="./separator-horizontal.svg?v=f87582c" alt="">
   <a href="https://github.com/boykopovar/AnyPS5"><img
       align="center"
       width="400"
@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <img width="820" height="1" src="./separator-horizontal.svg" alt="">
+  <img width="820" height="1" src="./separator-horizontal.svg?v=f87582c" alt="">
 </p>
 
 <p align="center">
