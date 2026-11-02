@@ -29,3 +29,15 @@
     alt="Most Used Languages"
   >
 </p>
+
+<p align="center">
+  <img width="820" height="1" src="./separator-horizontal.svg" alt="">
+</p>
+
+<p align="center">
+  <img
+    width="820"
+    src="./assets/top-repositories.svg"
+    alt="Top repositories: contributions, lines added, lines removed, stars and forks"
+  >
+</p>
