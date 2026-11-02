@@ -1,0 +1,51 @@
+name: Update profile cards
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 4 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-cards-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: main
+          persist-credentials: true
+
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '22'
+          package-manager-cache: false
+
+      - name: Check card generator
+        run: node --test scripts/top-repositories/*.test.mjs
+
+      - name: Refresh repository cards
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/top-repositories/update.mjs
+
+      - name: Save changed cards
+        run: |
+          git add assets/top-repositories-title.svg assets/fiverunner.svg assets/anyps5.svg
+          if git diff --cached --quiet; then
+            echo "Cards are already up to date."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m "Update profile repository cards"
+          git pull --rebase origin main
+          git push origin HEAD:main

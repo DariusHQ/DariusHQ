@@ -1,0 +1,57 @@
+const colors = {
+  TypeScript: '#3178c6', JavaScript: '#f1e05a', Python: '#3572a5',
+  'C++': '#f34b7d', Lua: '#000080', CSS: '#663399', HTML: '#e34c26',
+  Rust: '#dea584', Go: '#00add8', Java: '#b07219', 'C#': '#178600',
+};
+const escape = value => String(value).replace(/[&<>"']/g, char => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;',
+})[char]);
+const shorten = (value, limit) => {
+  const chars = Array.from(String(value ?? '').replace(/\s+/g, ' ').trim());
+  return escape(chars.length > limit ? `${chars.slice(0, limit - 1).join('')}…` : chars.join(''));
+};
+const count = (value, prefix = '') => Number.isSafeInteger(value) && value >= 0
+  ? `${prefix}${value.toLocaleString('en-US')}` : '—';
+
+const repositoryIcon = '<path d="M3 2.5h10v13H3a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2Z M1 12.5a2 2 0 0 1 2-2h10 M5 2.5v5l2-1.2L9 7.5v-5"/>';
+const starIcon = '<path d="m8 1 2.1 4.3 4.8.7-3.5 3.4.8 4.8L8 12l-4.2 2.2.8-4.8L1.1 6l4.8-.7Z"/>';
+const forkIcon = '<circle cx="4" cy="3" r="2"/><circle cx="12" cy="3" r="2"/><circle cx="8" cy="13" r="2"/><path d="M4 5v1.5A2.5 2.5 0 0 0 6.5 9H8m4-4v1.5A2.5 2.5 0 0 1 9.5 9H8v2"/>';
+
+export function renderHeading() {
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="820" height="54" viewBox="0 0 820 54" role="img" aria-labelledby="heading-title">
+  <title id="heading-title">Top repositories:</title>
+  <rect width="820" height="54" fill="#0d1117"/>
+  <text x="16" y="36" fill="#37d67a" font-family="Segoe UI, Ubuntu, Arial, sans-serif" font-size="20" font-weight="600">Top repositories:</text>
+</svg>\n`;
+}
+
+export function renderRepositoryCard({ owner, repository: repo }) {
+  if (typeof owner !== 'string' || !owner.trim() || !repo || typeof repo.name !== 'string' || !repo.name.trim()) {
+    throw new TypeError('owner and a repository with a name are required');
+  }
+  const language = typeof repo.language === 'string' && repo.language ? repo.language : 'Unknown language';
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="230" viewBox="0 0 400 230" role="img" aria-labelledby="repo-title repo-description">
+  <title id="repo-title">${escape(repo.name)} — ${escape(owner)}</title>
+  <desc id="repo-description">Stars: ${count(repo.stars)}. Forks: ${count(repo.forks)}. Contributions: ${count(repo.contributions)}. Lines added: ${count(repo.additions)}. Lines removed: ${count(repo.deletions)}. Contributions count commits authored by ${escape(owner)} on the default branch, excluding merge commits. A dash means unavailable.</desc>
+  <defs><clipPath id="repo-summary"><rect x="16" y="46" width="368" height="24"/></clipPath></defs>
+  <rect width="400" height="230" fill="#0d1117"/>
+  <g font-family="Segoe UI, Ubuntu, Arial, sans-serif">
+    <g transform="translate(16 22)" fill="none" stroke="#37d67a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${repositoryIcon}</g>
+    <text x="42" y="36" fill="#37d67a" font-size="17" font-weight="600">${shorten(repo.name, 20)}</text>
+    <text x="16" y="62" fill="#8b949e" font-size="12" clip-path="url(#repo-summary)">${shorten(repo.description || 'No description provided.', 54)}</text>
+    <circle cx="21" cy="88" r="5" fill="${colors[language] || '#8b949e'}"/>
+    <text x="34" y="92" fill="#c9d1d9" font-size="11">${shorten(language, 24)}</text>
+    <g transform="translate(250 78)"><title>Stars</title><g fill="none" stroke="#37d67a" stroke-width="1.2" stroke-linejoin="round">${starIcon}</g><text x="23" y="14" fill="#c9d1d9" font-size="12">${count(repo.stars)}</text></g>
+    <g transform="translate(323 78)"><title>Forks</title><g fill="none" stroke="#37d67a" stroke-width="1.2" stroke-linecap="round">${forkIcon}</g><text x="23" y="14" fill="#c9d1d9" font-size="12">${count(repo.forks)}</text></g>
+    <path d="M135 119v45 M266 119v45" stroke="#30363d"/>
+    <text x="16" y="142" fill="#f0f6fc" font-size="20" font-weight="600">${count(repo.contributions)}</text>
+    <text x="16" y="162" fill="#c9d1d9" font-size="10">Contributions</text>
+    <text x="147" y="142" fill="#37d67a" font-size="20" font-weight="600">${count(repo.additions, '+')}</text>
+    <text x="147" y="162" fill="#c9d1d9" font-size="10">Lines added</text>
+    <text x="278" y="142" fill="#f85149" font-size="20" font-weight="600">${count(repo.deletions, '−')}</text>
+    <text x="278" y="162" fill="#c9d1d9" font-size="10">Lines removed</text>
+    <path d="M16 187h368" stroke="#30363d"/>
+    <text x="16" y="211" fill="#8b949e" font-size="10">Commits by ${shorten(owner, 39)} · Default branch</text>
+  </g>
+</svg>\n`;
+}
