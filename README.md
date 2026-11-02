@@ -5,6 +5,7 @@
       src="./assets/fiverunner.svg"
       alt="fiverunner: contributions, lines added, lines removed, stars and forks"
     ></a>
+  <img align="center" width="1" height="230" src="./separator-horizontal.svg" alt="">
   <a href="https://github.com/boykopovar/AnyPS5"><img
       align="center"
       width="400"
