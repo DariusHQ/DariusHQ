@@ -37,9 +37,35 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/top-repositories/update.mjs
 
+      - name: Generate contribution streak
+        id: streak
+        continue-on-error: true
+        uses: DenverCoder1/github-readme-streak-stats@v1.8.1
+        with:
+          options: 'user=DariusHQ&disable_animations=true&card_width=467&hide_border=true&background=0d1117&ring=37d67a&fire=37d67a&currStreakLabel=37d67a&sideLabels=c9d1d9&currStreakNum=ffffff&sideNums=ffffff&dates=8b949e&stroke=30363d'
+          path: ${{ runner.temp }}/streak.svg
+
+      - name: Publish valid contribution streak
+        if: steps.streak.outcome == 'success'
+        continue-on-error: true
+        env:
+          STREAK_PATH: ${{ runner.temp }}/streak.svg
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFileSync, renameSync } from 'node:fs';
+          const svg = readFileSync(process.env.STREAK_PATH, 'utf8');
+          assert.match(svg, /<svg\b/);
+          assert.match(svg, /<\/svg>\s*$/);
+          for (const label of ['Total Contributions', 'Current Streak', 'Longest Streak']) {
+            assert.ok(svg.includes(label), 'Missing streak label: ' + label);
+          }
+          renameSync(process.env.STREAK_PATH, 'assets/streak.svg');
+          NODE
+
       - name: Save changed cards
         run: |
-          git add assets/fiverunner.svg assets/anyps5.svg
+          git add assets/fiverunner.svg assets/anyps5.svg assets/streak.svg
           if git diff --cached --quiet; then
             echo "Cards are already up to date."
             exit 0

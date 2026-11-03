@@ -22,7 +22,7 @@
   <img
     align="top"
     width="467"
-    src="https://streak-stats.demolab.com/?user=DariusHQ&amp;disable_animations=true&amp;card_width=467&amp;hide_border=true&amp;background=0d1117&amp;ring=37d67a&amp;fire=37d67a&amp;currStreakLabel=37d67a&amp;sideLabels=c9d1d9&amp;currStreakNum=ffffff&amp;sideNums=ffffff&amp;dates=8b949e&amp;stroke=30363d"
+    src="./assets/streak.svg"
     alt="Total Contributions, Current Streak and Longest Streak"
   >
   <img
