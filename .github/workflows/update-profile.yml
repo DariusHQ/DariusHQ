@@ -43,7 +43,7 @@ jobs:
         continue-on-error: true
         uses: DenverCoder1/github-readme-streak-stats@v1.8.1
         with:
-          options: 'user=DariusHQ&disable_animations=true&card_width=467&hide_border=true&background=0d1117&ring=37d67a&fire=37d67a&currStreakLabel=37d67a&sideLabels=c9d1d9&currStreakNum=ffffff&sideNums=ffffff&dates=8b949e&stroke=30363d'
+          options: 'user=DariusHQ&disable_animations=true&card_width=400&card_height=170&hide_border=true&background=0d1117&ring=37d67a&fire=37d67a&currStreakLabel=37d67a&sideLabels=c9d1d9&currStreakNum=ffffff&sideNums=ffffff&dates=8b949e&stroke=30363d'
           path: ${{ runner.temp }}/streak.svg
 
       - name: Publish valid contribution streak

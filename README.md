@@ -20,15 +20,15 @@
 
 <p align="center">
   <img
-    align="top"
-    width="467"
+    align="center"
+    width="400"
     src="./assets/streak.svg"
     alt="Total Contributions, Current Streak and Longest Streak"
   >
   <img
-    align="top"
-    width="305"
-    src="https://github-stats-extended.vercel.app/api/top-langs?username=dariushq&amp;disable_animations=true&amp;layout=compact&amp;bg_color=0d1117&amp;title_color=37d67a&amp;icon_color=37d67a&amp;text_color=c9d1d9&amp;hide_border=true"
+    align="center"
+    width="400"
+    src="https://github-stats-extended.vercel.app/api/top-langs?username=dariushq&amp;disable_animations=true&amp;layout=compact&amp;card_width=400&amp;bg_color=0d1117&amp;title_color=37d67a&amp;icon_color=37d67a&amp;text_color=c9d1d9&amp;hide_border=true"
     alt="Most Used Languages"
   >
 </p>
