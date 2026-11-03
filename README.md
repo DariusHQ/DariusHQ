@@ -22,7 +22,7 @@
   <img
     align="center"
     width="400"
-    src="./assets/streak.svg"
+    src="./assets/streak.svg?v=400x170"
     alt="Total Contributions, Current Streak and Longest Streak"
   >
   <img
