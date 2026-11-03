@@ -39,6 +39,7 @@ jobs:
 
       - name: Generate contribution streak
         id: streak
+        timeout-minutes: 3
         continue-on-error: true
         uses: DenverCoder1/github-readme-streak-stats@v1.8.1
         with:
