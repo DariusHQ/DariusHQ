@@ -1,4 +1,23 @@
 <p align="center">
+  <img
+    align="center"
+    width="400"
+    src="./assets/streak.svg?v=400x170"
+    alt="Total Contributions, Current Streak and Longest Streak"
+  >
+  <img
+    align="center"
+    width="400"
+    src="https://github-stats-extended.vercel.app/api/top-langs?username=dariushq&amp;disable_animations=true&amp;layout=compact&amp;card_width=400&amp;bg_color=0d1117&amp;title_color=37d67a&amp;icon_color=37d67a&amp;text_color=c9d1d9&amp;hide_border=true"
+    alt="Most Used Languages"
+  >
+</p>
+
+<p align="center">
+  <img width="820" height="1" src="./separator-horizontal.svg?v=f87582c" alt="">
+</p>
+
+<p align="center">
   <a href="https://github.com/DariusHQ/fiverunner"><img
       align="center"
       width="400"
@@ -12,23 +31,4 @@
       src="./assets/anyps5.svg"
       alt="AnyPS5: contributions, lines added, lines removed, stars and forks"
     ></a>
-</p>
-
-<p align="center">
-  <img width="820" height="1" src="./separator-horizontal.svg?v=f87582c" alt="">
-</p>
-
-<p align="center">
-  <img
-    align="center"
-    width="400"
-    src="./assets/streak.svg?v=400x170"
-    alt="Total Contributions, Current Streak and Longest Streak"
-  >
-  <img
-    align="center"
-    width="400"
-    src="https://github-stats-extended.vercel.app/api/top-langs?username=dariushq&amp;disable_animations=true&amp;layout=compact&amp;card_width=400&amp;bg_color=0d1117&amp;title_color=37d67a&amp;icon_color=37d67a&amp;text_color=c9d1d9&amp;hide_border=true"
-    alt="Most Used Languages"
-  >
 </p>
