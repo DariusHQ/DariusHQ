@@ -26,8 +26,16 @@ export function renderRepositoryCard({ owner, repository: repo }) {
   <title id="repo-title">${escape(repo.name)} — ${escape(owner)}</title>
   <desc id="repo-description">Stars: ${count(repo.stars)}. Forks: ${count(repo.forks)}. Contributions: ${count(repo.contributions)}. Lines added: ${count(repo.additions)}. Lines removed: ${count(repo.deletions)}. Contributions count commits authored by ${escape(owner)} on the default branch, excluding merge commits. A dash means unavailable.</desc>
   <defs><clipPath id="repo-summary"><rect x="16" y="46" width="368" height="24"/></clipPath></defs>
+  <style>
+    .card-content { opacity: 1; transform: translateY(0); animation: card-in 750ms ease-out 1; }
+    @keyframes card-in {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) { .card-content { animation: none; } }
+  </style>
   <rect width="400" height="230" fill="#0d1117"/>
-  <g font-family="Segoe UI, Ubuntu, Arial, sans-serif">
+  <g class="card-content" font-family="Segoe UI, Ubuntu, Arial, sans-serif">
     <g transform="translate(16 22)" fill="none" stroke="#37d67a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">${repositoryIcon}</g>
     <text x="42" y="36" fill="#37d67a" font-size="17" font-weight="600">${shorten(repo.name, 20)}</text>
     <text x="16" y="62" fill="#8b949e" font-size="12" clip-path="url(#repo-summary)">${shorten(repo.description || 'No description provided.', 54)}</text>

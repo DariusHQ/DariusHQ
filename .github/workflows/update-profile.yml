@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    - cron: '17 4 * * *'
+    - cron: '17,47 * * * *'
 
 permissions:
   contents: write
@@ -41,9 +41,9 @@ jobs:
         id: streak
         timeout-minutes: 3
         continue-on-error: true
-        uses: DenverCoder1/github-readme-streak-stats@v1.8.1
+        uses: DenverCoder1/github-readme-streak-stats@adbd07609bb771d3510a15ee2f3b31d5fbe5201d # v1.8.1
         with:
-          options: 'user=DariusHQ&disable_animations=true&card_width=400&card_height=170&hide_border=true&background=0d1117&ring=37d67a&fire=37d67a&currStreakLabel=37d67a&sideLabels=c9d1d9&currStreakNum=ffffff&sideNums=ffffff&dates=8b949e&stroke=30363d'
+          options: 'user=DariusHQ&disable_animations=false&card_width=400&card_height=170&hide_border=true&background=0d1117&ring=37d67a&fire=37d67a&currStreakLabel=37d67a&sideLabels=c9d1d9&currStreakNum=ffffff&sideNums=ffffff&dates=8b949e&stroke=30363d'
           path: ${{ runner.temp }}/streak.svg
 
       - name: Publish valid contribution streak
@@ -53,20 +53,37 @@ jobs:
           STREAK_PATH: ${{ runner.temp }}/streak.svg
         run: |
           node --input-type=module <<'NODE'
-          import assert from 'node:assert/strict';
-          import { readFileSync, renameSync } from 'node:fs';
-          const svg = readFileSync(process.env.STREAK_PATH, 'utf8');
-          assert.match(svg, /<svg\b/);
-          assert.match(svg, /<\/svg>\s*$/);
-          for (const label of ['Total Contributions', 'Current Streak', 'Longest Streak']) {
-            assert.ok(svg.includes(label), 'Missing streak label: ' + label);
-          }
-          renameSync(process.env.STREAK_PATH, 'assets/streak.svg');
+          import { publishCard } from './scripts/top-repositories/publish.mjs';
+          await publishCard(process.env.STREAK_PATH, 'assets/streak.svg', ['Total Contributions', 'Current Streak', 'Longest Streak']);
+          NODE
+
+      - name: Generate language card
+        id: languages
+        timeout-minutes: 3
+        continue-on-error: true
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: top-langs
+          options: 'username=DariusHQ&disable_animations=false&layout=compact&card_width=400&bg_color=0d1117&title_color=37d67a&icon_color=37d67a&text_color=c9d1d9&hide_border=true'
+          path: ${{ runner.temp }}/languages.svg
+          token: ${{ github.token }}
+          core_version: '' # Use the Action's locked core dependency.
+          fail_on_error: true
+
+      - name: Publish valid language card
+        if: steps.languages.outcome == 'success'
+        continue-on-error: true
+        env:
+          LANGUAGES_PATH: ${{ runner.temp }}/languages.svg
+        run: |
+          node --input-type=module <<'NODE'
+          import { publishCard } from './scripts/top-repositories/publish.mjs';
+          await publishCard(process.env.LANGUAGES_PATH, 'assets/languages.svg', ['Most Used Languages']);
           NODE
 
       - name: Save changed cards
         run: |
-          git add assets/fiverunner.svg assets/anyps5.svg assets/streak.svg
+          git add assets/fiverunner.svg assets/anyps5.svg assets/streak.svg assets/languages.svg
           if git diff --cached --quiet; then
             echo "Cards are already up to date."
             exit 0
