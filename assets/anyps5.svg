@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="230" viewBox="0 0 400 230" role="img" aria-labelledby="repo-title repo-description">
   <title id="repo-title">AnyPS5 — DariusHQ</title>
-  <desc id="repo-description">Stars: 53,522. Forks: 5,097. Contributions: 11. Lines added: 1,630. Lines removed: 37. Contributions count commits authored by DariusHQ on the default branch, excluding merge commits. A dash means unavailable.</desc>
+  <desc id="repo-description">Stars: 53,581. Forks: 5,107. Contributions: 11. Lines added: 1,630. Lines removed: 37. Contributions count commits authored by DariusHQ on the default branch, excluding merge commits. A dash means unavailable.</desc>
   <defs><clipPath id="repo-summary"><rect x="16" y="46" width="368" height="24"/></clipPath></defs>
   <style>
     .card-content { opacity: 1; transform: translateY(0); animation: card-in 750ms ease-out 1; }
@@ -17,8 +17,8 @@
     <text x="16" y="62" fill="#8b949e" font-size="12" clip-path="url(#repo-summary)">Tool for automatic PS5 executables porting to Linux a…</text>
     <circle cx="21" cy="88" r="5" fill="#f34b7d"/>
     <text x="34" y="92" fill="#c9d1d9" font-size="11">C++</text>
-    <g transform="translate(250 78)"><title>Stars</title><g fill="none" stroke="#37d67a" stroke-width="1.2" stroke-linejoin="round"><path d="m8 1 2.1 4.3 4.8.7-3.5 3.4.8 4.8L8 12l-4.2 2.2.8-4.8L1.1 6l4.8-.7Z"/></g><text x="23" y="14" fill="#c9d1d9" font-size="12">53,522</text></g>
-    <g transform="translate(323 78)"><title>Forks</title><g fill="none" stroke="#37d67a" stroke-width="1.2" stroke-linecap="round"><circle cx="4" cy="3" r="2"/><circle cx="12" cy="3" r="2"/><circle cx="8" cy="13" r="2"/><path d="M4 5v1.5A2.5 2.5 0 0 0 6.5 9H8m4-4v1.5A2.5 2.5 0 0 1 9.5 9H8v2"/></g><text x="23" y="14" fill="#c9d1d9" font-size="12">5,097</text></g>
+    <g transform="translate(250 78)"><title>Stars</title><g fill="none" stroke="#37d67a" stroke-width="1.2" stroke-linejoin="round"><path d="m8 1 2.1 4.3 4.8.7-3.5 3.4.8 4.8L8 12l-4.2 2.2.8-4.8L1.1 6l4.8-.7Z"/></g><text x="23" y="14" fill="#c9d1d9" font-size="12">53,581</text></g>
+    <g transform="translate(323 78)"><title>Forks</title><g fill="none" stroke="#37d67a" stroke-width="1.2" stroke-linecap="round"><circle cx="4" cy="3" r="2"/><circle cx="12" cy="3" r="2"/><circle cx="8" cy="13" r="2"/><path d="M4 5v1.5A2.5 2.5 0 0 0 6.5 9H8m4-4v1.5A2.5 2.5 0 0 1 9.5 9H8v2"/></g><text x="23" y="14" fill="#c9d1d9" font-size="12">5,107</text></g>
     <path d="M135 119v45 M266 119v45" stroke="#30363d"/>
     <text x="16" y="142" fill="#f0f6fc" font-size="20" font-weight="600">11</text>
     <text x="16" y="162" fill="#c9d1d9" font-size="10">Contributions</text>
